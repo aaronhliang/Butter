@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Jeopardy Clue Archive</title>
+  <!-- Bootstrap core CSS -->
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bootstrap.css') }}">
+  <!-- Custom styles for this template -->
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Quantico|Raleway:800i&display=swap" rel="stylesheet">
+  <!--font awesome -->
+  <script src="https://kit.fontawesome.com/083a9c2d09.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bgcustom fixed-top" id="mainNav">
+    <div class="container">
+
+    <!-- Brand/Site Logo -->  
+      <a class="navbar-brand js-scroll-trigger" href="/"><img src="https://fontmeme.com/permalink/191020/f60d800119d3f1e4576306c3f3752734.png" alt="jeopardy-font" border="0"></a>
+
+      
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      
+
+
+      
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+
+            <a class="nav-link js-scroll-trigger" href="/random?submit=Surprise+Me"><img src="https://fontmeme.com/permalink/191020/8b62f061f82fe4a4a3f5a92af6cb7a65.png" alt="jeopardy-font" border="0"></a>
+          </li>
+
+
+          <li class="nav-item">
+             <a class="nav-link js-scroll-trigger" href="/#Search"><img src="https://fontmeme.com/permalink/191020/b8e523773bdcbfad18fc0a3668f06e8d.png" alt="jeopardy-font" border="0"></a>
+           </li>
+          
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ 
+
+ {% block content %}
+  
+ {% endblock %}
+
+ 
+
+  <!-- Bootstrap core JavaScript -->
+  
+
+
+  <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <!-- Plugin JavaScript -->
+
+  <script src="{{url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="{{url_for('static', filename='js/scrolling-nav.js')}}"></script>
+
+</body>
+
+</html>
