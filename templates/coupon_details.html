@@ -1,16 +1,15 @@
-{% extends 'template.html' %}
 
 {% block content %}
 
+{{coupon}}
 <div>
-    
-    <h1>coupon['merchant']['name']</h1>
-    <h3>Expiration Date</h3>
+    <h1>{{coupon['merchant']['name']}}</h1>
+    <h3>{{coupon['expires_at']}}</h3>
 
     <div>
-        <h1>50% off all sale items!</h1>
-        <h3>Details (limits and restrictions) about the sales</h3>
-        <p>Fine print (other smaller less relevant details)</p>
+        <h1>{{coupon['title']}}</h1>
+        <h3>{{coupon['description']}}</h3>
+        <p>{{coupon['fine_print']}}</p>
     </div>
 </div>
 
