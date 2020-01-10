@@ -6,7 +6,7 @@ api_key = 'MBjxxSsO'
 
 
 @app.route('/')
-def index():
+def start():
     return render_template("index.html")
 
 @app.route('/index')
