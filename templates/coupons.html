@@ -1,3 +1,4 @@
+{% extends 'template.html' %}
 
 {% block content %}
 <div class="container">
@@ -7,14 +8,15 @@
     {% for coupon in coupons %}
     <div class="col-md-6">
         <div class="card" style="margin-bottom: 5em">
-          <h3 class="card-header">{{ coupon['deal']['title'] }}</h3>
+        <img src="{{ coupon['deal']['image_url']}}" class="card-img-top">
+          <h4 class="card-header">{{ coupon['deal']['title'] }}</h4>
           <div class="card-body">
             <h4 class="card-title">{{ coupon['deal']['short_title'] }}</h4>
             <p class="card-text"> {{ coupon['deal']['description']}}</p>
 
             <h4>{{ coupon['deal']['merchant']['name'] }}</h4>
-            <p>Location: {{ coupon['deal']['merchant']['address'] }}</p>
-            <p>Phone Number: {{ coupon['deal']['merchant']['phone_number'] }}</p>
+            {{ coupon['deal']['merchant']['address'] }}
+            {{ coupon['deal']['merchant']['phone_number'] }}
           </div>
         </div>
     </div>
