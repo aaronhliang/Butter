@@ -23,6 +23,7 @@ GoogleMaps(app)
 def start():
     return render_template("index.html")
 
+api_key = "MBjxxSsO"
 
 @app.route('/index')
 def index():
