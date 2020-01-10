@@ -6,7 +6,7 @@ import requests
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
 from GoogleMapsAPIKey import get_my_key
-from Maps import getCurrentLocation
+from Maps import getCurrentLocation, getZipCode
 
 app = Flask(__name__)
 
@@ -71,8 +71,8 @@ def favoritedCoupons():
 
 @app.route('/coupons', methods=['GET'])
 def coupons():
-    results = get_coupons(22101)
-    populate_map(results)
+    # results = get_coupons(getZipCode()) #uncomment for location tracking
+    results = get_coupons(22101) # hardcoded in for zip code
 
     return render_template("coupons.html", coupons=results)
 
@@ -86,8 +86,10 @@ def get_coupons(zip_code, radius=10):
 def mapview():
 
     currentLocation = getCurrentLocation()
-    coupons = get_coupons(22101)
-    markers = populate_map(coupons)
+    #Uncomment this line to track location
+    # coupons = get_coupons(getZipCode())
+    coupons = get_coupons(22101) # hardcoded in zip code for demo purposes
+    markers = populate_map(coupons, currentLocation)
 
     sndmap = Map(
         identifier="sndmap",
@@ -97,10 +99,21 @@ def mapview():
         style="height:500px;width:100%;margin:0;",
         zoom=18
     )
+
+    # Uncomment for location tracking
+    # sndmap = Map(
+    #     identifier="sndmap",
+    #     lat=currentLocation[0],
+    #     lng=currentLocation[1],
+    #     markers=markers,
+    #     style="height:500px;width:100%;margin:0;",
+    #     zoom=20
+    # )
+
     return render_template('Map.html', sndmap=sndmap)
 
 
-def populate_map(coupons):
+def populate_map(coupons, currentLocation):
     markers = []
     for coupon in coupons:
         couponId = str(coupon['deal']['id'])
@@ -116,6 +129,24 @@ def populate_map(coupons):
                 'infobox': "<div><h3><a href=/coupons#" + couponId + ">" + title + "</a></h3><p>" + terms + "</div>"
             }
         )
+
+        markers.append(
+            {
+                'lat': 38.900055,
+                'lng': -76.995700,
+                'icon': 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                'infobox': "You are here"
+            }
+        )
+
+        # markers.append(
+        #     {
+        #         'lat': currentLocation[0],
+        #         'lng': currentLocation[1],
+        #         'icon': 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+        #         'infobox': "You are here"
+        #     }
+        # )
 
     return markers
 

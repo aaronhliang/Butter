@@ -18,3 +18,7 @@ def getCurrentLocation():
 
     return myloc
 
+def getZipCode():
+    myLoc = getCurrentLocation()
+    reverse_geocode_result = gmaps.reverse_geocode((myLoc[0], myLoc[1]))
+    return reverse_geocode_result[0]['address_components'][6]['long_name']
