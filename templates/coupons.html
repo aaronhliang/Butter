@@ -9,7 +9,7 @@
 
     <div class="row">
     {% for coupon in coupons %}
-    <div class="col-md-6">
+    <div id="{{ coupon['deal']['id'] }}" class="col-md-6">
         <div class="card" style="margin-bottom: 5em">
         <img src="{{ coupon['deal']['image_url']}}" class="card-img-top">
           <h4 class="card-header">{{ coupon['deal']['title'] }}</h4>
