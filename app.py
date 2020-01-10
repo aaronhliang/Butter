@@ -9,6 +9,9 @@ api_key = 'MBjxxSsO'
 def index():
     return render_template("index.html")
 
+@app.route('/index')
+def index():
+    return render_template("index.html")
 
 @app.route('/coupons', methods=['GET'])
 def coupons():
