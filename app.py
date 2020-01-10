@@ -87,7 +87,7 @@ def mapview():
         lat=38.900060,
         lng=-76.995700,
         markers=markers,
-        style="height:500px;width:500px;margin:0;",
+        style="height:500px;width:100%;margin:0;",
         zoom = 18
     )
     return render_template('Map.html', sndmap=sndmap)
