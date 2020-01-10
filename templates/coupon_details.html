@@ -1,0 +1,17 @@
+
+{% block content %}
+
+{{coupon}}
+<div>
+    <h1>{{coupon['merchant']['name']}}</h1>
+    <h3>{{coupon['expires_at']}}</h3>
+
+    <div>
+        <h1>{{coupon['title']}}</h1>
+        <h3>{{coupon['description']}}</h3>
+        <p>{{coupon['fine_print']}}</p>
+    </div>
+</div>
+
+
+{% endblock %}
