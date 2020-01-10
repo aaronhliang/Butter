@@ -6,8 +6,8 @@ api_key = 'MBjxxSsO'
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def index():
+    return render_template("index.html")
 
 
 @app.route('/coupons', methods=['GET'])
@@ -19,3 +19,8 @@ def coupons():
 def get_coupons(zip_code):
     url = 'https://api.discountapi.com/v2/deals?location=' + str(zip_code) + '&api_key=' + api_key
     return requests.get(url).json()['deals']
+
+
+@app.route('/favorites')
+def favorite():
+	return render_template("favorites.html")
