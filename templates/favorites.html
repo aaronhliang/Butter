@@ -3,11 +3,29 @@
 
 {% block content %}
 
-<head>
-	<title>
- 		Favorited Coupons
-	</title>
- </head>
+<link rel="stylesheet" href="static/styles/primaryButton.css">
+
+<div class="container">
+    <h2>{{ coupons|length }} Favorited Coupons</h2>
+    <div class="row">
+    {% for coupon in coupons %}
+    <div class="col-md-6">
+        <div class="card" style="margin-bottom: 5em">
+        <img src="{{ coupons['image_url']}}" class="card-img-top">
+          <h4 class="card-header">{{ coupon['title'] }}</h4>
+          <div class="card-body">
+            <h4 class="card-title">{{ coupon['short_title'] }}</h4>
+            <p class="card-text"> {{ coupon['description'] }}</p>
+
+              <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+                  Single toggle
+              </button>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
 
 
 

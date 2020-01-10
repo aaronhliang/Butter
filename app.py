@@ -19,6 +19,12 @@ app.config['GOOGLEMAPS_KEY'] = get_my_key()
 # Initialize the extension
 GoogleMaps(app)
 
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
+
 @app.route('/')
 def start():
     return render_template("index.html")
@@ -48,6 +54,14 @@ def couponSpecific(coupon_id):
         url = 'https://api.discountapi.com/v2/deals/' + str(coupon_id)
         result = requests.get(url).json()['deal']
         return render_template("coupon_details.html", coupon=result)
+
+@app.route("/favorited", methods=["GET"])
+def favoritedCoupons():
+    saved_coupons_collection = honey_db['savedCoupons']
+    allFavs = JSONEncoder().encode(list(saved_coupons_collection.find()))
+    print(allFavs)
+    return render_template("favorites.html", coupons=allFavs)
+
 
 @app.route('/coupons', methods=['GET'])
 def coupons():
