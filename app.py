@@ -16,8 +16,13 @@ app.config['GOOGLEMAPS_KEY'] = get_my_key()
 GoogleMaps(app)
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def start():
+    return render_template("index.html")
+
+
+@app.route('/index')
+def index():
+    return render_template("index.html")
 
 @app.route('/coupons', methods=['GET'])
 def coupons():
@@ -63,3 +68,14 @@ def populate_map(coupons):
         )
 
     return markers
+
+
+def get_coupons(zip_code, radius=10):
+    url = 'https://api.discountapi.com/v2/deals?location=' + str(zip_code) + '&radius=' + str(radius) + '&api_key=' + api_key
+
+    return requests.get(url).json()['deals']
+
+
+@app.route('/favorites')
+def favorite():
+    return render_template("favorites.html")
