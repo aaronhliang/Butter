@@ -9,6 +9,9 @@ api_key = 'MBjxxSsO'
 def hello_world():
     return 'Hello, World!'
 
+@app.route('/index')
+def index():
+    return render_template("index.html")
 
 @app.route('/coupons', methods=['GET'])
 def coupons():
