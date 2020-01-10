@@ -1,12 +1,11 @@
-
 {% extends 'template.html' %}
 
 {% block content %}
 
 <link rel="stylesheet" href="static/styles/primaryButton.css">
 
-<div class="container">
-    <h2>{{ coupons|length }} Favorited Coupons</h2>
+<div class="container" style="padding-top: 150px;">
+    <h2>{{ coupons | length }} Favorited Coupons</h2>
     <div class="row">
     {% for coupon in coupons %}
     <div class="col-md-6">
@@ -28,8 +27,4 @@
 </div>
 
 
-
-
-
 {% endblock %}
-

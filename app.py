@@ -55,12 +55,15 @@ def couponSpecific(coupon_id):
         result = requests.get(url).json()['deal']
         return render_template("coupon_details.html", coupon=result)
 
-@app.route("/favorited", methods=["GET"])
+@app.route("/favorites", methods=["GET"])
 def favoritedCoupons():
     saved_coupons_collection = honey_db['savedCoupons']
-    allFavs = JSONEncoder().encode(list(saved_coupons_collection.find()))
-    print(allFavs)
-    return render_template("favorites.html", coupons=allFavs)
+    allFavs1 = list(saved_coupons_collection.find())
+
+    # allFavs = JSONEncoder().encode(list(saved_coupons_collection.find()))
+    # saved_coupons_collection.find()
+
+    return render_template("favorites.html", coupons=allFavs1)
 
 
 @app.route('/coupons', methods=['GET'])
@@ -115,8 +118,3 @@ def get_coupons(zip_code, radius=10):
     url = 'https://api.discountapi.com/v2/deals?location=' + str(zip_code) + '&radius=' + str(radius) + '&api_key=' + api_key
 
     return requests.get(url).json()['deals']
-
-
-@app.route('/favorites')
-def favorite():
-    return render_template("favorites.html")
