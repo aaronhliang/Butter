@@ -6,8 +6,13 @@ api_key = 'MBjxxSsO'
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def start():
+    return render_template("index.html")
+
+
+@app.route('/index')
+def index():
+    return render_template("index.html")
 
 
 @app.route('/coupons', methods=['GET'])
@@ -34,3 +39,8 @@ def populate_map(coupons):
         print("lat:", lat)
         print("longitude: ", lon)
         print()
+
+
+@app.route('/favorites')
+def favorite():
+    return render_template("favorites.html")
