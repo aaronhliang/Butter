@@ -1,6 +1,9 @@
 {% extends 'template.html' %}
 
 {% block content %}
+
+<link rel="stylesheet" href="static/styles/primaryButton.css">
+
 <div class="container">
     <h2>{{ coupons|length }} Coupons found</h2>
 
@@ -8,14 +11,21 @@
     {% for coupon in coupons %}
     <div class="col-md-6">
         <div class="card" style="margin-bottom: 5em">
-          <h3 class="card-header">{{ coupon['deal']['title'] }}</h3>
+        <img src="{{ coupon['deal']['image_url']}}" class="card-img-top">
+          <h4 class="card-header">{{ coupon['deal']['title'] }}</h4>
           <div class="card-body">
             <h4 class="card-title">{{ coupon['deal']['short_title'] }}</h4>
             <p class="card-text"> {{ coupon['deal']['description']}}</p>
 
             <h4>{{ coupon['deal']['merchant']['name'] }}</h4>
+
+            {{ coupon['deal']['merchant']['address'] }}
+            {{ coupon['deal']['merchant']['phone_number'] }}
             <p>Location: {{ coupon['deal']['merchant']['address'] }}</p>
             <p>Phone Number: {{ coupon['deal']['merchant']['phone_number'] }}</p>
+              <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+                  Single toggle
+              </button>
           </div>
         </div>
     </div>
