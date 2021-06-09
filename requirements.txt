@@ -12,7 +12,7 @@ idna==2.8
 itsdangerous==1.1.0
 Jinja2==2.10.3
 MarkupSafe==1.1.1
-pip==9.0.1
+pip==19.2
 pymongo==3.10.1
 ratelim==0.1.6
 requests==2.22.0
