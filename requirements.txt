@@ -16,7 +16,7 @@ pip==9.0.1
 pymongo==3.10.1
 ratelim==0.1.6
 requests==2.22.0
-setuptools==28.8.0
+setuptools==65.5.1
 six==1.13.0
 urllib3==1.25.7
 Werkzeug==0.16.0
